@@ -21,7 +21,7 @@ const IndexPage = ({ data, location }) => {
               <h3
                 class="blog-list-title" 
               >
-                <Link to={node.frontmatter.slug}>
+                <Link to={`blog/${node.frontmatter.slug}`}>
                   {title}
                 </Link>
               </h3>
