@@ -1,7 +1,7 @@
 ---
 title: "My first blog post"
 date: "2020-03-01"
-slug: "first-post"
+slug: "/blog/first-post"
 ---
 
 ### Welcome to my blog!
