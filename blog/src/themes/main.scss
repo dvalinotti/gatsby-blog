@@ -1,0 +1,86 @@
+#blog-header {
+    background-color: #164e6f;
+
+    div {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        h1 #blog-header-title {
+            font-family: 'Noto Sans', sans-serif;
+            font-weight: 300;
+            color: white;
+            text-decoration: none;
+        }
+        
+        small {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 300;
+            color: white;
+        }
+    }
+}
+
+.blog-list {
+    padding: 0 1.0875rem;
+    
+    #recent-posts {
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 2rem;
+        font-weight: 600;
+        padding-top: 45px;
+        color: rgba(0,0,0,0.8);
+    }
+}
+
+.blog-list-item {
+    margin: 30px 0 60px; 
+    padding-top: 20px;
+    border-top: 1px solid #d4d4d4;
+    header {
+        margin-left: 15px;
+    }
+    .blog-list-title {
+        margin-bottom: 0;
+        
+        a {
+            color: rgba(0,0,0,0.8);
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Open Sans', sans-serif;
+        }
+    }
+
+    small {
+        color: #707070;
+        font-weight: 100;
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+    }
+}
+
+#blog-post {
+    header {
+        .blog-post-title {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            padding-bottom: 5px;
+        }
+        .blog-post-date {
+            color: #707070;
+            font-weight: 100;
+            text-decoration: none;
+            font-family: 'Open Sans', sans-serif;
+        }
+    }
+    section {
+        h3 {
+            font-family: 'Noto Sans', sans-serif;
+        }
+        p {
+            font-family: 'Noto Sans', sans-serif;
+            letter-spacing: 0;
+        }
+    }
+}
