@@ -42,6 +42,14 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-plugin-htaccess`,
+      options: {
+        https: true,
+        RewriteBase: `/blog/`,
+        host: `www.danvalinotti.com`,
+      }
+    },
+    {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
