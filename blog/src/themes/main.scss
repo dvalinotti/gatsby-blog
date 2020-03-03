@@ -6,6 +6,12 @@
         justify-content: space-between;
         align-items: flex-end;
 
+        @media (max-width: 425px) {
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
         h1 #blog-header-title {
             font-family: 'Noto Sans', sans-serif;
             font-weight: 300;
@@ -31,6 +37,12 @@
         padding-top: 45px;
         color: rgba(0,0,0,0.8);
         margin-bottom: 30px;
+
+        @media (max-width: 425px) {
+            font-size: 1.65rem;
+            padding-top: 30px;
+            margin-bottom: 20px;
+        }
     }
 }
 
@@ -49,6 +61,11 @@
             text-decoration: none;
             font-weight: 600;
             font-family: 'Open Sans', sans-serif;
+            font-size: 1.5rem;
+
+            @media (max-width: 425px) {
+                font-size: 1.25rem;
+            }
         }
     }
 
@@ -74,6 +91,10 @@
             font-weight: 400;
             padding-top: 5px;
             color: rgba(0, 0, 0, 0.65);
+
+            @media (max-width: 425px) { 
+                margin-bottom: 15px;
+            }
         }
         .blog-post-date {
             color: #707070;
