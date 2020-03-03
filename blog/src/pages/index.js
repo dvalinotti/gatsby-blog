@@ -7,6 +7,8 @@ import SEO from "../components/seo"
 const IndexPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
+  console.log(process.env.NODE_ENV);
+  console.log(process.env.SLUG_PATH);
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -21,19 +23,12 @@ const IndexPage = ({ data, location }) => {
               <h3
                 class="blog-list-title" 
               >
-                <Link to={`blog/${node.frontmatter.slug}`}>
+                <Link to={`${process.env.SLUG_PATH}${node.frontmatter.slug}`}>
                   {title}
                 </Link>
               </h3>
               <small>{node.frontmatter.date}</small>
             </header>
-            {/* <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </section> */}
           </article>
         )
       })}
@@ -58,6 +53,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             slug
+            subtitle
           }
         }
       }

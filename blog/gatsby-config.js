@@ -1,9 +1,12 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 module.exports = {
-  pathPrefix: `/blog`,
+  // pathPrefix: `/blog`,
   siteMetadata: {
-    title: `Dan Valinotti's Blog`,
+    title: `Dan's Dev Blog`,
     description: `Software engineer, wannabe writer.`,
-    siteUrl: `https://danvalinotti.com/blog`,
+    siteUrl: `${process.env.SITE_URL}`,
     author: `@gatsbyjs`,
   },
   plugins: [
@@ -106,8 +109,8 @@ module.exports = {
       resolve: `gatsby-plugin-htaccess`,
       options: {
         https: true,
-        // RewriteBase: `/blog/`,
-        host: `www.danvalinotti.com`,
+        RewriteBase: process.env.REWRITE_BASE,
+        host: `${process.env.SITE_URL}`,
       }
     },
     {

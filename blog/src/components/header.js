@@ -13,7 +13,7 @@ const Header = ({ siteTitle, description }) => (
     >
       <h1 style={{ margin: 0 }}>
         <Link
-          to="/"
+          to={`${process.env.SLUG_PATH}`}
           id="blog-header-title"
         >
           {siteTitle}

@@ -27,6 +27,11 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           >
             {post.frontmatter.title}
           </h1>
+          {post.frontmatter.subtitle && (
+            <h6 className="blog-post-subtitle">
+              {post.frontmatter.subtitle}
+            </h6>
+          )}
           <p
             className="blog-post-date"
             style={{
@@ -57,14 +62,14 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         >
           <li>
             {previous && (
-              <Link to={previous.fields.slug} rel="prev">
+              <Link to={previous.frontmatter.slug} rel="prev">
                 ← {previous.frontmatter.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={next.fields.slug} rel="next">
+              <Link to={next.frontmatter.slug} rel="next">
                 {next.frontmatter.title} →
               </Link>
             )}
@@ -81,7 +86,7 @@ export const pageQuery = graphql`
 query BlogPostBy($id: String!) {
     site {
         siteMetadata {
-        title
+          title
         }
     }
     markdownRemark(id: { eq: $id }) {
@@ -89,8 +94,10 @@ query BlogPostBy($id: String!) {
         excerpt(pruneLength: 160)
         html
         frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
+          title
+          subtitle
+          slug
+          date(formatString: "MMMM DD, YYYY")
         }
     }
 }
