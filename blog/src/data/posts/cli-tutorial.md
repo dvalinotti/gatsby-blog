@@ -178,6 +178,6 @@ There's a little bit of extra work that had to go into this. Each encryption alg
 
 **4. Running the program**
 
-To test our program, we can run `./bin/run` in the terminal which will launch our CLI application. Congradulations! You have created your very own CLI tool to use as you please. CLI applications can be extremely powerful - and learning how to make them yourself is a great learning experience that can also improve your productivity. You can also publish your CLI tool to [npmjs.org](https://npmjs.org/) so anyone can install and use your work!
+To test our program, we can run `./bin/run` in the terminal which will launch our CLI application. Congratulations! You have created your very own CLI tool to use as you please. CLI applications can be extremely powerful - and learning how to make them yourself is a great learning experience that can also improve your productivity. You can also publish your CLI tool to [npmjs.org](https://npmjs.org/) so anyone can install and use your work!
 
 The full code for index.ts can be found [here](https://gist.github.com/dan-valinotti/6f7499d8e7a59d32f85740486ef4ba28).
