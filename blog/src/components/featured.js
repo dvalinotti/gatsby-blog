@@ -12,9 +12,7 @@ const FeaturedPost = ({ post }) => (
           <h3
             className="blog-list-title" 
             >
-            <Link to={`${process.env.SLUG_PATH}${post.frontmatter.slug}`}>
               {post.frontmatter.title}
-            </Link>
           </h3>
           <p>{post.excerpt}</p>
         </header>

@@ -150,8 +150,11 @@ main {
                 }
     
                 .blog-list-item {
-                    .blog-list-title a {
-                        font-size: 1.5rem;
+                    header {
+                        .blog-list-title {
+                            font-size: 1.5rem;
+                            color: rgba(41, 45, 43, 0.85);
+                        }
                     }
                 }
             }
@@ -282,6 +285,7 @@ ol li {
     padding-bottom: 45px;
 
     .post-link {
+        color: rgba(41, 45, 43, 0.85);
         width: 100%;
         max-width: 320px;
         .blog-list-item--container1 {
@@ -302,9 +306,7 @@ ol li {
                     margin: 30px 5px 5px;
                 }
 
-                picture img {
-                    height: auto !important;
-                }
+                
             }
 
             .blog-list-item {
@@ -328,6 +330,7 @@ ol li {
 
 .post-link {
     text-decoration: none;
+    color: rgba(41, 45, 43, 0.85);
     @media (max-width: 425px) {
         max-width: unset;
     }
