@@ -4,6 +4,9 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import FeaturedPost from "../components/featured"
 import PostListItem from "../components/post-list-item"
+import "../data/images/next.png";
+import "../data/images/cli-tool.jpg";
+import "../data/images/hello.jpg";
 
 const IndexPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
