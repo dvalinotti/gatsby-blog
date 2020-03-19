@@ -284,10 +284,6 @@ ol li {
     .post-link {
         width: 100%;
         max-width: 320px;
-
-        @media (max-width: 425px) {
-            max-width: 100%;
-        }
         .blog-list-item--container1 {
             display: flex;
             flex-basis: 33%;
@@ -304,6 +300,10 @@ ol li {
 
                 @media (max-width: 425px) {
                     margin: 30px 5px 5px;
+                }
+
+                picture img {
+                    height: auto !important;
                 }
             }
 
@@ -328,4 +328,7 @@ ol li {
 
 .post-link {
     text-decoration: none;
+    @media (max-width: 425px) {
+        max-width: unset;
+    }
 }
