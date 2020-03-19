@@ -2,7 +2,7 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 module.exports = {
-  // pathPrefix: `/blog`,
+  pathPrefix: `/blog`,
   siteMetadata: {
     title: `Dan's Dev Blog`,
     description: `Software engineer, wannabe writer.`,
@@ -10,6 +10,7 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-sass`,
     {
