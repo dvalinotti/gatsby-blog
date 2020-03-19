@@ -55,7 +55,7 @@ module.exports = {
         // Setting this parameter is also optional
         respectDNT: true,
         // Avoids sending pageview hits from custom paths
-        // exclude: ["/preview/**", "/do-not-track/me/too/"],
+        // `exc`lude: ["/preview/**", "/do-not-track/me/too/"],
         // Delays sending pageview hits on route update (in milliseconds)
         pageTransitionDelay: 0,
         // Enables Google Optimize using your container Id
@@ -120,7 +120,10 @@ module.exports = {
           `limelight`,
           `source sans pro\:300,400,400i,700`,
           `noto sans\:300,400,400i,700`,// you can also specify font weights and styles
-          `abril fatface\:300,400,400i,700`
+          `abril fatface\:300,400,400i,700`,
+          `playfair display\:300,400,400i,700`,
+          `work sans\:100,300,400,400i,600,700`,
+          `alegreya\:100,300,400,400i,600,700`
         ],
         display: 'swap'
       }
@@ -220,6 +223,12 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        path: `${__dirname}/src/data/images/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `posts`,
         path: `${__dirname}/src/data/posts`,
         ignore: [`**/\.*`], // ignore files starting with a dot
@@ -228,6 +237,7 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
+        excerpt_separator: `<!-- end -->`,
         plugins: [
           {
             resolve: `gatsby-remark-images`,
@@ -261,7 +271,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/src/data/images`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -275,9 +285,23 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
+        icon: `src/data/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: `gatsby-plugin-excerpts`,
+      options: {
+        sources: {
+          default: {
+            type: `htmlQuery`,
+            sourceField: `html`,
+            excerptSelector: `html > *`,
+            ignoreSelector: `.gatsby-resp-image-wrapper`,
+            stripSelector: `a`,
+          }
+        }
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

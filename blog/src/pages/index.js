@@ -1,37 +1,26 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
-
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import FeaturedPost from "../components/featured"
+import PostListItem from "../components/post-list-item"
 
 const IndexPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
-  console.log(process.env.NODE_ENV);
-  console.log(process.env.SLUG_PATH);
-
+  
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="Recent Posts" />
-      <header id="recent-posts">Recent Posts</header>
-
-      {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
-        return (
-          <article key={node.frontmatter.slug} className="blog-list-item">
-            <header>
-              <h3
-                class="blog-list-title" 
-              >
-                <Link to={`${process.env.SLUG_PATH}${node.frontmatter.slug}`}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-            </header>
-          </article>
-        )
-      })}
+      <FeaturedPost post={posts[0].node}/>
+      
+      <div className="old-posts-container">
+        {posts.slice(1, posts.length).map(({ node }, key) => {
+          return (
+            <PostListItem key={key} post={node}/> 
+          )
+        })}
+      </div>
     </Layout>
   )
 }
@@ -48,12 +37,21 @@ export const pageQuery = graphql`
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
-          excerpt
+          excerpt(format: MARKDOWN)
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
             slug
+            featuredImage {
+              childImageSharp {
+                id
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
             subtitle
+            category
           }
         }
       }

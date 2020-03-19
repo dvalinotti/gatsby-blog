@@ -1,5 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import hastToHyperscript from "hast-to-hyperscript";
+import Img from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -10,6 +12,10 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
 
+  const renderHtmlToReact = node => {
+    return hastToHyperscript(React.createElement, node);
+  };
+
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
@@ -18,31 +24,39 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       />
       <article id="blog-post">
         <header>
-          <h1
-            className="blog-post-title"
-            style={{
-              marginTop: 30,
-              marginBottom: 0,
-            }}
-          >
-            {post.frontmatter.title}
-          </h1>
-          {post.frontmatter.subtitle && (
-            <h6 className="blog-post-subtitle">
-              {post.frontmatter.subtitle}
-            </h6>
-          )}
-          <p
-            className="blog-post-date"
-            style={{
-              display: `block`,
-              marginBottom: 30,
-            }}
-          >
-            {post.frontmatter.date}
-          </p>
+          <div className="blog-post-header">
+            <div>
+              <h1
+                className="blog-post-title"
+                style={{
+                  marginTop: 30,
+                  marginBottom: 0,
+                }}
+              >
+                {post.frontmatter.title}
+              </h1>
+              {post.frontmatter.subtitle && (
+                <h6 className="blog-post-subtitle">
+                  {post.frontmatter.subtitle}
+                </h6>
+              )}
+            </div>
+            <p
+              className="blog-post-date"
+              style={{
+                display: `block`,
+              }}
+            >
+              {post.frontmatter.date}
+            </p>
+          </div>
+          
         </header>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
+        {/* <section dangerouslySetInnerHTML={{ __html: post.html }} /> */}
+        <section>
+          <Img fluid={post.frontmatter.featuredImage.childImageSharp.fluid} alt={post.frontmatter.title}/>
+          {renderHtmlToReact(post.htmlAst)}
+        </section>
         <hr
           style={{
             marginBottom: 30,
@@ -90,15 +104,24 @@ query BlogPostBy($id: String!) {
         }
     }
     markdownRemark(id: { eq: $id }) {
-        id
-        excerpt(pruneLength: 160)
-        html
-        frontmatter {
-          title
-          subtitle
-          slug
-          date(formatString: "MMMM DD, YYYY")
-        }
+      id
+      excerpt(pruneLength: 160)
+      html
+      htmlAst
+      frontmatter {
+        title
+        subtitle
+        featuredImage {
+            childImageSharp {
+              id
+              fluid(maxWidth: 800) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        slug
+        date(formatString: "MMMM DD, YYYY")
+      }
     }
 }
 `

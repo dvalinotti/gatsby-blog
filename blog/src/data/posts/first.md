@@ -2,6 +2,9 @@
 title: "My first blog post"
 date: "2020-03-01"
 slug: "first-post"
+featuredImage: ../images/hello.jpg
+category: "Other"
+subtitle: "Hello world!"
 tags: ["general", "first-post", "introduction"]
 ---
 

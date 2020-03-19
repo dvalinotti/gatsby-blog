@@ -3,6 +3,8 @@ title: "Migrating to Next.js: Part 1"
 subtitle: "A formal introduction."
 date: "2020-03-03"
 slug: "nextjs-migration-part-1"
+category: "Migration"
+featuredImage: ../images/next.png
 tags: ["nextjs", "migration", "introduction"]
 ---
 

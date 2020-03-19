@@ -3,11 +3,11 @@ title: "Creating a CLI tool using Node.js"
 subtitle: "Spend time learning to save time working."
 date: "2020-03-11"
 slug: "nodejs-cli-tutorial"
+category: "Tutorials"
+featuredImage: ../images/cli-tool.jpg
 tags: ["tutorial", "nodejs", "oclif", "cli"]
 ---
-
-### Introduction
-In an attempt to learn something new about Node.js, and to improve my productivity, I began developing a CLI tool for generating React components. This would be very useful for the Next.js project that I talked about in my last post, as I could customize the file structure to the pattern I’ve already implemented (Model, View, ViewModel-ish).  Through the use of the `oclif` CLI framework, it was actually pretty easy to not only develop this tool, but also to publish it on NPM so that my team members could utilize it as well. I decided to create this tutorial to share my experience and hopefully help you write tools that can make you more productive.
+In an attempt to learn something new about Node.js, and to improve my productivity, I began developing a CLI tool for generating React components. This would be very useful for the Next.js project that I talked about in my last post, as I could customize the file structure to the pattern I’ve already implemented (Model, View, ViewModel-ish).<!-- end -->  Through the use of the `oclif` CLI framework, it was actually pretty easy to not only develop this tool, but also to publish it on NPM so that my team members could utilize it as well. I decided to create this tutorial to share my experience and hopefully help you write tools that can make you more productive.
 
 ### Getting Started
 **1. Initialize the Oclif project**
