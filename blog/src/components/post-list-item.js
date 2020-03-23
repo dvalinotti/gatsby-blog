@@ -3,18 +3,18 @@ import { Link } from "gatsby"
 import Img from "gatsby-image"
 
 const PostListItem = ({ post }) => (
-  <Link className="post-link" to={`${process.env.SLUG_PATH}${post.frontmatter.slug}`}>
+  <Link className="post-link" to={`${process.env.SLUG_PATH}${post.slug}`}>
     <div className="blog-list-item--container1">
-      <Img fluid={post.frontmatter.featuredImage.childImageSharp.fluid} alt={post.frontmatter.title}/>
-      <article key={post.frontmatter.slug} className="blog-list-item blog-list-item--old">
+      <Img fluid={post.thumbnail.childImageSharp.fluid} alt={post.title}/>
+      <article key={post.slug} className="blog-list-item blog-list-item--old">
         <header>
-          <small>{`${post.frontmatter.category} // ${post.frontmatter.date}`}</small>
+          <small>{`${post.category.name} // ${post.date_posted}`}</small>
           <h3
             className="blog-list-title" 
             >
-              {post.frontmatter.title}
+              {post.title}
           </h3>
-          <p>{post.frontmatter.subtitle}</p>
+          <p>{post.subtitle}</p>
         </header>
       </article>
     </div>

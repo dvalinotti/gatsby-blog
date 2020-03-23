@@ -137,7 +137,7 @@ main {
                 display: flex;
                 flex-basis: 33%;
                 flex-direction: column;
-                max-width: 320px;
+                max-width: 300px;
     
                 .gatsby-image-wrapper {
                     height: 180px;
@@ -284,15 +284,23 @@ ol li {
     justify-content: flex-start;
     padding-bottom: 45px;
 
+    @media (max-width: 425px) {
+        justify-content: center;
+    }
+
     .post-link {
         color: rgba(41, 45, 43, 0.85);
         width: 100%;
-        max-width: 320px;
+        max-width: 300px;
+
+        @media (max-width: 425px) {
+            max-width: 100%;
+        }
         .blog-list-item--container1 {
             display: flex;
             flex-basis: 33%;
             flex-direction: column;
-            max-width: 320px;
+            max-width: 300px;
             @media (max-width: 425px) {
                 max-width: 100%;
             }

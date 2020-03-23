@@ -1,54 +1,50 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+const makeRequest = (graphql, request) => new Promise((resolve, reject) => {
+  // Query for nodes to use in creating pages.
+  resolve(
+    graphql(request).then(result => {
+      if (result.errors) {
+        reject(result.errors)
+      }
+      
+      return result;
+    })
+  )
+});
 
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  const result = await graphql(
-    `
-      {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
-          edges {
-            node {
-              id
-              frontmatter {
-                title
-                slug
-              }
-            }
+// Implement the Gatsby API “createPages”. This is called once the
+// data layer is bootstrapped to let plugins create pages from data.
+exports.createPages = ({ actions, graphql }) => {
+  const { createPage } = actions;
+  
+  const getPosts = makeRequest(graphql, `
+    {
+      allStrapiPost {
+        edges {
+          node {
+            slug
           }
         }
       }
-    `
-  )
-
-  if (result.errors) {
-    throw result.errors
-  }
-
-  // Create blog posts pages.
-  const posts = result.data.allMarkdownRemark.edges
-
-  posts.forEach((post, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
-
-    createPage({
-      path: post.node.frontmatter.slug,
-      component: blogPost,
-      context: {
-        id: post.node.id,
-        slug: post.node.frontmatter.slug,
-        previous,
-        next,
-      },
+    }
+    `).then(result => {
+    // Create pages for each article.
+    result.data.allStrapiPost.edges.forEach(({ node }) => {
+      createPage({
+        path: `/${node.slug}`,
+        component: path.resolve(`src/templates/post.js`),
+        context: {
+          slug: node.slug,
+        },
+      })
     })
-  })
-}
+  });
+  
+  // Query for articles nodes to use in creating pages.
+  return getPosts;
+};
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
