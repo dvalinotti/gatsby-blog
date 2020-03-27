@@ -14,7 +14,7 @@ const FeaturedPost = ({ post }) => (
             >
               {post.frontmatter.title}
           </h3>
-          <p>{post.excerpt}</p>
+          <p>{post.frontmatter.subtitle}</p>
         </header>
       </article>
     </div>

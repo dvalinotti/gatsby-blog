@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
       <div
         style={{
           margin: `0 auto`,
-          maxWidth: 960,
+          maxWidth: 1000,
         }}
         className="blog-list"
       >
